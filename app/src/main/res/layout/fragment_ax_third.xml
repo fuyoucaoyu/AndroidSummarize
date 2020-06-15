@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment.axdefault.fragments.AxThirdFragment">
+
+    <Button
+        android:id="@+id/ax_third_to_first"
+        android:layout_width="@dimen/activity_button_width"
+        android:layout_height="@dimen/activity_button_height"
+        android:layout_gravity="center"
+        android:layout_marginBottom="@dimen/activity_button_height"
+        android:text="@string/fragment_goto_first"/>
+
+    <Button
+        android:id="@+id/ax_third_to_second"
+        android:layout_width="@dimen/activity_button_width"
+        android:layout_height="@dimen/activity_button_height"
+        android:layout_gravity="center"
+        android:text="@string/fragment_goto_second"/>
+
+    <Button
+        android:id="@+id/ax_third_to_fourth"
+        android:layout_width="@dimen/activity_button_width"
+        android:layout_height="@dimen/activity_button_height"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/activity_button_height"
+        android:text="@string/fragment_goto_fourth"/>
+
+</FrameLayout>

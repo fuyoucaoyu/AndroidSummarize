@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">AndroidSummarize</string>
+    <string name="activity_fragment">FragmentStack</string>
+    <string name="fragment_goto_first">第一个Fragment</string>
+    <string name="fragment_goto_second">第二个Fragment</string>
+    <string name="fragment_goto_third">第三个Fragment</string>
+    <string name="fragment_goto_fourth">第四个Fragment</string>
 </resources>

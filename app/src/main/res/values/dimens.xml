@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="activity_button_width">156dp</dimen>
+    <dimen name="activity_button_height">23dp</dimen>
+
+    <dimen name="activity_button_text_size">27sp</dimen>
+</resources>
