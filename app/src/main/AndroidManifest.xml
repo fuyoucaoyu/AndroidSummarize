@@ -17,6 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".fragment.FragmentPageActivity" />
+        <activity android:name=".fragment.axdefault.AxFragmentActivity"></activity>
     </application>
 
 </manifest>

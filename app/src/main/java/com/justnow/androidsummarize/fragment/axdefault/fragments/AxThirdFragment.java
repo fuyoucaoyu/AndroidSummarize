@@ -10,8 +10,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 
 import com.justnow.androidsummarize.R;
+import com.justnow.androidsummarize.fragment.axdefault.AxFragmentFactory;
+import com.justnow.androidsummarize.fragment.axdefault.AxFragmentManager;
 
 /**
  * A simple {@link BaseAxFragment} subclass.
@@ -26,6 +30,12 @@ public class AxThirdFragment extends BaseAxFragment {
 
     private String mParam1;
     private String mParam2;
+
+    private Button mGotoFirstBtn;
+    private Button mGotoSecondBtn;
+    private Button mGotoFourthBtn;
+    private EditText mEditText1;
+    private EditText mEditText2;
 
     public AxThirdFragment() {
         super();
@@ -75,7 +85,39 @@ public class AxThirdFragment extends BaseAxFragment {
                              Bundle savedInstanceState) {
         Log.d(TAG, "onCreateView");
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_ax_third, container, false);
+        mContainerView = inflater.inflate(R.layout.fragment_ax_third, container, false);
+        initView();
+        return mContainerView;
+    }
+
+    private void initView() {
+        mGotoFirstBtn = mContainerView.findViewById(R.id.ax_third_to_first);
+        mGotoSecondBtn = mContainerView.findViewById(R.id.ax_third_to_second);
+        mGotoFourthBtn = mContainerView.findViewById(R.id.ax_third_to_fourth);
+        mEditText1 = mContainerView.findViewById(R.id.ax_third_editor_1);
+        mEditText2 = mContainerView.findViewById(R.id.ax_third_editor_2);
+
+        mGotoSecondBtn.setOnClickListener(this);
+        mGotoFirstBtn.setOnClickListener(this);
+        mGotoFourthBtn.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        Bundle bundle = new Bundle();
+        bundle.putString(AxFragmentManager.KEY_PARAM_1, "param1_from_fragment_3");
+        bundle.putString(AxFragmentManager.KEY_PARAM_2, "param2_from_fragment_3");
+        switch (v.getId()) {
+            case R.id.ax_third_to_first:
+                mAxFragmentManager.showFragment(AxFragmentFactory.FRAGMENT_FIRST, bundle);
+                break;
+            case R.id.ax_third_to_second:
+                mAxFragmentManager.showFragment(AxFragmentFactory.FRAGMENT_SECOND, bundle);
+                break;
+            case R.id.ax_third_to_fourth:
+                mAxFragmentManager.showFragment(AxFragmentFactory.FRAGMENT_FOURTH, bundle);
+                break;
+        }
     }
 
     @Override

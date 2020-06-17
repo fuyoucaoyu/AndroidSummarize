@@ -5,27 +5,43 @@
     android:layout_height="match_parent"
     tools:context=".fragment.axdefault.fragments.AxThirdFragment">
 
-    <Button
-        android:id="@+id/ax_third_to_first"
-        android:layout_width="@dimen/activity_button_width"
-        android:layout_height="@dimen/activity_button_height"
-        android:layout_gravity="center"
-        android:layout_marginBottom="@dimen/activity_button_height"
-        android:text="@string/fragment_goto_first"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Third Fragment" />
 
-    <Button
-        android:id="@+id/ax_third_to_second"
-        android:layout_width="@dimen/activity_button_width"
-        android:layout_height="@dimen/activity_button_height"
-        android:layout_gravity="center"
-        android:text="@string/fragment_goto_second"/>
+        <EditText
+            android:id="@+id/ax_third_editor_1"
+            android:layout_width="@dimen/activity_button_width"
+            android:layout_height="wrap_content"
+            android:hint="param_1"/>
 
-    <Button
-        android:id="@+id/ax_third_to_fourth"
-        android:layout_width="@dimen/activity_button_width"
-        android:layout_height="@dimen/activity_button_height"
-        android:layout_gravity="center"
-        android:layout_marginTop="@dimen/activity_button_height"
-        android:text="@string/fragment_goto_fourth"/>
+        <EditText
+            android:id="@+id/ax_third_editor_2"
+            android:layout_width="@dimen/activity_button_width"
+            android:layout_height="wrap_content"
+            android:hint="param_2"/>
+        <Button
+            android:id="@+id/ax_third_to_first"
+            android:layout_width="@dimen/activity_button_width"
+            android:layout_height="wrap_content"
+            android:text="@string/fragment_goto_first"/>
 
+        <Button
+            android:id="@+id/ax_third_to_second"
+            android:layout_width="@dimen/activity_button_width"
+            android:layout_height="wrap_content"
+            android:text="@string/fragment_goto_second"/>
+
+        <Button
+            android:id="@+id/ax_third_to_fourth"
+            android:layout_width="@dimen/activity_button_width"
+            android:layout_height="wrap_content"
+            android:text="@string/fragment_goto_fourth"/>
+    </LinearLayout>
 </FrameLayout>
