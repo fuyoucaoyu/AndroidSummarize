@@ -9,6 +9,19 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+/**
+ * 通过 addToBackStack 添加到回退栈方式：
+ * 1. Fragment 页面编辑的文本等，回退时仍然存在
+ * 2. AppCompatActivity 的 onBackPressed 已经支持了 popBackStackImmediate
+ * 3. 切换Fragment：
+ *          Second: onAttach > onCreate >>
+ *          First: onPause > onStop > onDestroyView >>
+ *          Second: onCreateView > onStart > onResume
+ * 4. Back 返回栈内前一个：
+ *          Second: onPause > onStop > onDestroyView > onDestroy
+ *          First: onCreateView > onStart > onResume
+ * 5. addToBackStack 添加到回退栈的方式无法
+ */
 public class AxFragmentManager implements IAxFragmentManager {
 
     public static final String KEY_PARAM_1 = "param1";
@@ -67,6 +80,7 @@ public class AxFragmentManager implements IAxFragmentManager {
             transaction.replace(mContainerId, target);
             transaction.commit();
         } else {
+            mFragmentManager.popBackStack();
             mFragmentManager.popBackStack();
         }
 

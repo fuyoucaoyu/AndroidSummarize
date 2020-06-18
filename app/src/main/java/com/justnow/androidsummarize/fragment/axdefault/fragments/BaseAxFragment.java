@@ -17,8 +17,8 @@ public class BaseAxFragment extends Fragment implements View.OnClickListener {
     public static final String KEY_PARAM_2 = "param2";
 
     protected IAxFragmentManager mAxFragmentManager;
-
     protected View mContainerView;
+    private int type;
 
     public void setFragmentManager(IAxFragmentManager manager) {
         mAxFragmentManager = manager;
@@ -35,5 +35,13 @@ public class BaseAxFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View v) {
 
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
     }
 }

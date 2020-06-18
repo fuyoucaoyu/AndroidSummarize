@@ -35,6 +35,8 @@ public class AxFragmentFactory implements IAxFragmentFactory {
                 break;
         }
 
+        result.setType(type);
+
         return result;
     }
 }
