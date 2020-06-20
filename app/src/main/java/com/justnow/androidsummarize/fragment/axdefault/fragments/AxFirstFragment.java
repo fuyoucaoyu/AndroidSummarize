@@ -1,12 +1,6 @@
 package com.justnow.androidsummarize.fragment.axdefault.fragments;
 
-import android.content.Context;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.lifecycle.Lifecycle;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,19 +12,15 @@ import com.justnow.androidsummarize.R;
 import com.justnow.androidsummarize.fragment.axdefault.AxFragmentFactory;
 import com.justnow.androidsummarize.fragment.axdefault.AxFragmentManager;
 
+import androidx.annotation.NonNull;
+import androidx.lifecycle.Lifecycle;
+
 /**
  * A simple {@link BaseAxFragment} subclass.
  * Use the {@link AxFirstFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
 public class AxFirstFragment extends BaseAxFragment {
-
-    private static final String TAG = "AxFirstFragment";
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    private String mParam1;
-    private String mParam2;
 
     private EditText mEditText1;
     private EditText mEditText2;
@@ -66,25 +56,9 @@ public class AxFirstFragment extends BaseAxFragment {
     }
 
     @Override
-    public void onAttach(@NonNull Context context) {
-        super.onAttach(context);
-        Log.d(TAG, "onAttach");
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-        Log.d(TAG, "onCreate");
-    }
-
-    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        Log.d(TAG, "onCreateView");
+        Log.d(TAG, "0 onCreateView");
         // Inflate the layout for this fragment
         mContainerView = inflater.inflate(R.layout.fragment_ax_first, container, false);
         initView();
@@ -119,58 +93,5 @@ public class AxFirstFragment extends BaseAxFragment {
                 mAxFragmentManager.showFragment(AxFragmentFactory.FRAGMENT_FOURTH, bundle);
                 break;
         }
-    }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        Log.d(TAG, "onStart");
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        Log.d(TAG, "onResume");
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        Log.d(TAG, "onPause");
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-        Log.d(TAG, "onStop");
-    }
-
-    @Override
-    public void onLowMemory() {
-        super.onLowMemory();
-        Log.d(TAG, "onLowMemory");
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        Log.d(TAG, "onDestroyView");
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        Log.d(TAG, "onDestroy");
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        Log.d(TAG, "onDetach");
     }
 }
