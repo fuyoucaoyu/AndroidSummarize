@@ -2,10 +2,13 @@
     <string name="app_name">AndroidSummarize</string>
     <string name="activity_fragment">FragmentStack</string>
 
-    <string name="activity_fragment_ax">AndroidX</string>
+    <string name="activity_fragment_ax">AndroidX Default</string>
+    <string name="activity_fragment_navigation">AndroidX Navigation</string>
 
     <string name="fragment_goto_first">第一个Fragment</string>
     <string name="fragment_goto_second">第二个Fragment</string>
     <string name="fragment_goto_third">第三个Fragment</string>
     <string name="fragment_goto_fourth">第四个Fragment</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

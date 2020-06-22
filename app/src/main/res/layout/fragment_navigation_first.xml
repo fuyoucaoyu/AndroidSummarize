@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment.navigation.fragments.NavigationFirstFragment">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="@dimen/activity_button_height"
+        android:text="Navigation First Fragment" />
+
+    <Button
+        android:id="@+id/nav_first_to_second"
+        android:layout_width="@dimen/activity_button_width"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left|center"
+        android:gravity="center_vertical"
+        android:textSize="@dimen/activity_button_text_size"
+        android:text="@string/fragment_goto_second"/>
+
+    <Button
+        android:id="@+id/nav_first_to_third"
+        android:layout_width="@dimen/activity_button_width"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right|center"
+        android:gravity="center_vertical"
+        android:textSize="@dimen/activity_button_text_size"
+        android:text="@string/fragment_goto_third"/>
+
+    <EditText
+        android:id="@+id/nav_first_editor_1"
+        android:layout_width="@dimen/activity_button_width"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center"
+        android:hint="param_1"/>
+</FrameLayout>

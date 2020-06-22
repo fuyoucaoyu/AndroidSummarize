@@ -2,7 +2,6 @@ package com.justnow.androidsummarize.fragment.axdefault;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.util.SparseArray;
 
 import com.justnow.androidsummarize.fragment.axdefault.fragments.BaseAxFragment;
 
