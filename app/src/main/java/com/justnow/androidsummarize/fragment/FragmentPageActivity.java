@@ -9,6 +9,16 @@ import com.justnow.androidsummarize.R;
 import com.justnow.androidsummarize.fragment.axdefault.AxFragmentActivity;
 import com.justnow.androidsummarize.fragment.navigation.NavigationFragmentActivity;
 
+/**
+ * 多 Activity 架构：Activity 即页面
+ *       优势：系统内存告急时可以回收处于后台的 Activity，保证更多的资源给前台的页面和任务
+ *       劣势：启动新 Activity 是在 AMS 中运行（非 UI 主线程），它需要执行一系列耗时的操作，我们能明显地意识到「页面切换」这个动作
+ *
+ * 单 Activity 多 Fragment 架构：Fragment 即页面，适合页面层级结构不深的场景
+ *       优势：消耗更少的资源，能更快地响应页面间切换和交互
+ *       劣势：层次深的页面进行现场保存和还原会消耗更多的资源和时间
+ *
+ */
 import androidx.appcompat.app.AppCompatActivity;
 
 public class FragmentPageActivity extends AppCompatActivity implements View.OnClickListener {

@@ -40,6 +40,11 @@ import androidx.fragment.app.FragmentTransaction;
  * 7. popBackStack(int id, int flag) 回退到栈内特定的 Fragment
  * 8. 回退栈列表：FragmentManager.getFragments()
  * 9. 回退栈变化监听，处理 back 建触发的默认回退：onBackStackChanged
+ * 10. commit/commitAllowingStateLoss:
+ *     commitAllowingStateLoss - 允许丢失一些界面的状态和信息
+ *     常见错误：无法在activity调用了onSaveInstanceState之后再执行commit（），
+ *     原因：界面被系统回收（界面已经不存在），为了在下次打开的时候恢复原来的样子，系统为我们保存界面的所有状态，
+ *          这个时候我们再去修改界面理论上肯定是不允许的
  */
 public class AxFragmentManager implements IAxFragmentManager, FragmentManager.OnBackStackChangedListener {
 
@@ -132,7 +137,7 @@ public class AxFragmentManager implements IAxFragmentManager, FragmentManager.On
             transaction.add(mContainerId, target);
         }
         transaction.show(target);
-        transaction.commit();
+        transaction.commitAllowingStateLoss();
         Log.d(TAG, "show + hide");
 
         return true;

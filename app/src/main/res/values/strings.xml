@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">AndroidSummarize</string>
     <string name="activity_fragment">FragmentStack</string>
+    <string name="activity_event">EventDispatch</string>
 
     <string name="activity_fragment_ax">AndroidX Default</string>
     <string name="activity_fragment_navigation">AndroidX Navigation</string>
