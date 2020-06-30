@@ -27,6 +27,11 @@
                 android:layout_width="@dimen/activity_button_width"
                 android:layout_height="wrap_content"
                 android:text="@string/activity_event"/>
+            <Button
+                android:id="@+id/okhttp_btn"
+                android:layout_width="@dimen/activity_button_width"
+                android:layout_height="wrap_content"
+                android:text="@string/activity_okhttp"/>
         </LinearLayout>
     </ScrollView>
 

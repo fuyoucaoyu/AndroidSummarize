@@ -9,11 +9,9 @@ import android.widget.Button;
 
 import com.justnow.androidsummarize.event.EventDispatchTestActivity;
 import com.justnow.androidsummarize.fragment.FragmentPageActivity;
+import com.justnow.androidsummarize.okhttp.OkHttpActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-
-    private Button mFragmentBtn;
-    private Button mEventBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,11 +22,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void initView() {
-        mFragmentBtn = (Button) findViewById(R.id.fragment_btn);
-        mFragmentBtn.setOnClickListener(this);
+        Button fragmentBtn = findViewById(R.id.fragment_btn);
+        fragmentBtn.setOnClickListener(this);
 
-        mEventBtn = (Button) findViewById(R.id.event_btn);
-        mEventBtn.setOnClickListener(this);
+        Button eventBtn = findViewById(R.id.event_btn);
+        eventBtn.setOnClickListener(this);
+
+        Button okHttpBtn = findViewById(R.id.okhttp_btn);
+        okHttpBtn.setOnClickListener(this);
     }
 
     @Override
@@ -39,6 +40,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.event_btn:
                 gotoEventTestPage();
+                break;
+            case R.id.okhttp_btn:
+                gotoOkHttpPage();
                 break;
             default:
                 break;
@@ -53,6 +57,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void gotoEventTestPage() {
         Intent intent = new Intent(this, EventDispatchTestActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+    }
+
+    private void gotoOkHttpPage() {
+        Intent intent = new Intent(this, OkHttpActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }
