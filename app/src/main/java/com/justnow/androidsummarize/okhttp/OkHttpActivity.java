@@ -9,6 +9,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
+import okhttp3.mockwebserver.MockWebServer;
 import okio.BufferedSink;
 
 import android.os.Bundle;
@@ -18,6 +19,8 @@ import android.widget.Button;
 
 import com.justnow.androidsummarize.R;
 import com.justnow.androidsummarize.okhttp.interceptor.StatisticsInterceptor;
+import com.justnow.androidsummarize.okhttp.socket.MockSocketServer;
+import com.justnow.androidsummarize.okhttp.socket.SocketClientManager;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -28,6 +31,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStreamWriter;
+import java.util.concurrent.TimeUnit;
 
 /**
  * OkHttp是一个高效的HTTP客户端，它有以下默认特性：
@@ -53,12 +57,19 @@ public class OkHttpActivity extends AppCompatActivity implements View.OnClickLis
 
     private static final String TAG = "OkHttpTest";
 
+    private OkHttpClient mOkHttpClient;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ok_http);
 
+        initOkHttpClient();
         initView();
+    }
+
+    private void initOkHttpClient() {
+        mOkHttpClient = new OkHttpClient();
     }
 
     private void initView() {
@@ -68,6 +79,7 @@ public class OkHttpActivity extends AppCompatActivity implements View.OnClickLis
         Button asyncPost = findViewById(R.id.async_post);
         Button asyncPostStream = findViewById(R.id.async_post_stream);
         Button asyncPostFile = findViewById(R.id.async_post_file);
+        Button webSocket = findViewById(R.id.web_socket_button);
 
         syncGet.setOnClickListener(this);
         asyncGet.setOnClickListener(this);
@@ -75,6 +87,7 @@ public class OkHttpActivity extends AppCompatActivity implements View.OnClickLis
         asyncPost.setOnClickListener(this);
         asyncPostStream.setOnClickListener(this);
         asyncPostFile.setOnClickListener(this);
+        webSocket.setOnClickListener(this);
     }
 
     @Override
@@ -98,12 +111,15 @@ public class OkHttpActivity extends AppCompatActivity implements View.OnClickLis
             case R.id.async_post_file:
                 asyncPostFile();
                 break;
+            case R.id.web_socket_button:
+                startWebSocketTest();
+                break;
         }
     }
 
     private void syncGet() {
         String url = "https://www.baidu.com";
-        OkHttpClient okHttpClient = new OkHttpClient();
+        OkHttpClient okHttpClient = mOkHttpClient.newBuilder().build();
         Request request = new Request.Builder().url(url).build();
         final Call call = okHttpClient.newCall(request);
         new Thread(new Runnable() {
@@ -121,7 +137,7 @@ public class OkHttpActivity extends AppCompatActivity implements View.OnClickLis
 
     private void asyncGet() {
         String url = "https://www.publicobject.com/helloworld.txt";
-        OkHttpClient okHttpClient = new OkHttpClient.Builder()
+        OkHttpClient okHttpClient = mOkHttpClient.newBuilder()
                 .addInterceptor(new StatisticsInterceptor())
                 .build();
 
@@ -143,7 +159,7 @@ public class OkHttpActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     private void syncPost() {
-        OkHttpClient okHttpClient = new OkHttpClient();
+        OkHttpClient okHttpClient = mOkHttpClient.newBuilder().build();
         String url = "https://api.github.com/markdown/raw";
         MediaType type = MediaType.parse("text/x-markdown; charset=utf-8");
         String body = "Test Sync Post";
@@ -166,7 +182,7 @@ public class OkHttpActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     private void asyncPost() {
-        OkHttpClient okHttpClient = new OkHttpClient();
+        OkHttpClient okHttpClient = mOkHttpClient.newBuilder().build();
         String url = "https://api.github.com/markdown/raw";
         MediaType type = MediaType.parse("text/x-markdown; charset=utf-8");
         String body = "Test Async Post";
@@ -189,7 +205,7 @@ public class OkHttpActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     private void asyncPostStream() {
-        OkHttpClient okHttpClient = new OkHttpClient();
+        OkHttpClient okHttpClient = mOkHttpClient.newBuilder().build();
         String url = "https://api.github.com/markdown/raw";
         final MediaType type = MediaType.parse("text/x-markdown; charset=utf-8");
         final String body = "Test Async Stream Post";
@@ -234,7 +250,7 @@ public class OkHttpActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     private void asyncPostFile() {
-        OkHttpClient okHttpClient = new OkHttpClient();
+        OkHttpClient okHttpClient = mOkHttpClient.newBuilder().build();
         String url = "https://api.github.com/markdown/raw";
         final MediaType type = MediaType.parse("text/x-markdown; charset=utf-8");
 
@@ -290,6 +306,21 @@ public class OkHttpActivity extends AppCompatActivity implements View.OnClickLis
                 }
 
                 Log.d(TAG, "onResponse: " + response.body().string());
+            }
+        });
+    }
+
+    private void startWebSocketTest() {
+        MockSocketServer server = MockSocketServer.newInstance();
+        server.startServer(new MockSocketServer.IServerStatusCallback() {
+            @Override
+            public void onServerStart(String url) {
+                SocketClientManager client = new SocketClientManager.Builder()
+                        .url(url)
+                        .pinInterval(10, TimeUnit.SECONDS)
+                        .timeout(10, TimeUnit.SECONDS)
+                        .build();
+                client.connect();
             }
         });
     }

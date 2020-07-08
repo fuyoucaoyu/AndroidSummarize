@@ -44,5 +44,10 @@
             android:layout_width="@dimen/activity_button_width"
             android:layout_height="wrap_content"
             android:text="Async Post File"/>
+        <Button
+            android:id="@+id/web_socket_button"
+            android:layout_width="@dimen/activity_button_width"
+            android:layout_height="wrap_content"
+            android:text="OkHttp Socket"/>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
