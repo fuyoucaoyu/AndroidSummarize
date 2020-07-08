@@ -47,6 +47,7 @@ import java.io.OutputStreamWriter;
  *      OkHttpClient okHttpClient = new OkHttpClient();
  *      OkHttpClient client = okHttpClient.newBuilder(); // 共享连接池、线程池和配置信息
  *
+ * ResponseBody 的数据内容“阅后即焚”
  */
 public class OkHttpActivity extends AppCompatActivity implements View.OnClickListener {
 
