@@ -9,6 +9,7 @@ import android.widget.Button;
 
 import com.justnow.androidsummarize.event.EventDispatchTestActivity;
 import com.justnow.androidsummarize.fragment.FragmentPageActivity;
+import com.justnow.androidsummarize.multithreadhelper.MultiThreadHelperActivity;
 import com.justnow.androidsummarize.okhttp.OkHttpActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -30,6 +31,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         Button okHttpBtn = findViewById(R.id.okhttp_btn);
         okHttpBtn.setOnClickListener(this);
+
+        Button multiThreadHelperBtn = findViewById(R.id.multi_threading_helper_btn);
+        multiThreadHelperBtn.setOnClickListener(this);
     }
 
     @Override
@@ -43,6 +47,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.okhttp_btn:
                 gotoOkHttpPage();
+                break;
+            case R.id.multi_threading_helper_btn:
+                gotoMultiThreadHelperPage();
                 break;
             default:
                 break;
@@ -63,6 +70,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void gotoOkHttpPage() {
         Intent intent = new Intent(this, OkHttpActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+    }
+
+    private void gotoMultiThreadHelperPage() {
+        Intent intent = new Intent(this, MultiThreadHelperActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }

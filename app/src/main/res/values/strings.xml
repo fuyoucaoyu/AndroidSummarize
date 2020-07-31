@@ -3,6 +3,7 @@
     <string name="activity_fragment">FragmentStack</string>
     <string name="activity_event">EventDispatch</string>
     <string name="activity_okhttp">OkHttp</string>
+    <string name="activity_multi_threading_helper">MultithreadingHelper</string>
 
     <string name="activity_fragment_ax">AndroidX Default</string>
     <string name="activity_fragment_navigation">AndroidX Navigation</string>

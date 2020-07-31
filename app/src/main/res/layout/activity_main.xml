@@ -32,6 +32,11 @@
                 android:layout_width="@dimen/activity_button_width"
                 android:layout_height="wrap_content"
                 android:text="@string/activity_okhttp"/>
+            <Button
+                android:id="@+id/multi_threading_helper_btn"
+                android:layout_width="@dimen/activity_button_width"
+                android:layout_height="wrap_content"
+                android:text="@string/activity_multi_threading_helper"/>
         </LinearLayout>
     </ScrollView>
 
