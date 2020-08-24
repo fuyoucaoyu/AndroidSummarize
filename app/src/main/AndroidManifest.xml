@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.justnow.androidsummarize">
-
+    <!-- Wifi 信息 -->
     <application
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
@@ -11,9 +11,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".multithreadhelper.MultiThreadHelperActivity"></activity>
-        <activity android:name=".okhttp.OkHttpActivity" />
-        <activity android:name=".event.EventDispatchTestActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,18 +18,37 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".lifecycle.LifecycleActivity">
+            <intent-filter>
+                <!-- 必需项 -->
+                <action android:name="android.intent.action.VIEW" />
+                <!--表示该页面可以被隐式调用，必须加上该项-->
+                <category android:name="android.intent.category.DEFAULT"/>
+                <!-- 如果希望该应用可以通过浏览器的连接启动，则添加该项 -->
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="urlscheme"
+                    android:host="urlhost"
+                    android:port="8888"
+                    android:path="/urlpath" />
+            </intent-filter>
+        </activity>
+
         <activity android:name=".fragment.FragmentPageActivity" />
         <activity android:name=".fragment.axdefault.AxFragmentActivity" />
         <activity android:name=".fragment.navigation.NavigationFragmentActivity" />
-    </application> <!-- Wifi 信息 -->
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <!-- 网络 -->
+        <activity android:name=".multithreadhelper.MultiThreadHelperActivity" />
+        <activity android:name=".okhttp.OkHttpActivity" />
+        <activity android:name=".event.EventDispatchTestActivity" />
+    </application> <!-- 网络 -->
     <uses-permission android:name="android.permission.INTERNET" /> <!-- 文件读写 -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission
         android:name="android.permission.READ_PRIVILEGED_PHONE_STATE"
         tools:ignore="ProtectedPermissions" />
-
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
 </manifest>

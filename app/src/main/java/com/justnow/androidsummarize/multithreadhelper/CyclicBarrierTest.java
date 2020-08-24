@@ -6,8 +6,8 @@ import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
 
 /**
- * CyclicBarrier是一个同步辅助类，可以让正在运行中的线程与其他线程在某一公共时刻进行同步。
- *
+ * CyclicBarrier 是一个同步辅助类，可以让正在运行中的线程与其他线程在某一公共时刻进行同步。
+ * CyclicBarrier.await() 表示等待
  * 可以用来做：
  *      1. 所有线程等待相同的时间开始同步运行
  */
