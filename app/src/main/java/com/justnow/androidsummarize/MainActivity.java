@@ -3,6 +3,7 @@ package com.justnow.androidsummarize;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -34,6 +35,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         Button multiThreadHelperBtn = findViewById(R.id.multi_threading_helper_btn);
         multiThreadHelperBtn.setOnClickListener(this);
+
+        Button lifecycleBtn = findViewById(R.id.lifecycle_btn);
+        lifecycleBtn.setOnClickListener(this);
     }
 
     @Override
@@ -50,6 +54,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.multi_threading_helper_btn:
                 gotoMultiThreadHelperPage();
+                break;
+            case R.id.lifecycle_btn:
+                gotoLifecyclePage();
                 break;
             default:
                 break;
@@ -80,5 +87,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         startActivity(intent);
     }
 
+    private void gotoLifecyclePage() {
+//        Uri uri = Uri.parse("urlscheme://urlhost:8888/urlpath?urlkey=testvalue");
+//        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+//        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//        startActivity(intent);
 
+        Intent intent = new Intent();
+        intent.setAction("com.justnow.lifecycleaction");
+        intent.addCategory("android.intent.category.DEFAULT");
+
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        }
+    }
 }

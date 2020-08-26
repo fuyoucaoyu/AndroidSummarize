@@ -11,15 +11,31 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:label="Main"
+            android:persistableMode="persistAcrossReboots"
+            android:launchMode="singleTask">
+            <!-- android.intent.action.MAIN和android.intent.category.LAUNCHER同时设置会在launcher显示一个应用图标，
+            单独设置android.intent.category.LAUNCHER不会出现图标，
+            且一个应用程序最少要有一对。
+            也可以设置多对，这样会在系统桌面出现过个应用程序图标。 -->
             <intent-filter>
+                <!-- android.intent.action.MAIN ：程序最先启动的Activity可以给多个Activity设置 -->
                 <action android:name="android.intent.action.MAIN" />
-
+                <!-- android.intent.category.LAUNCHER：应用程序是否显示在桌面，可以给多个Activity配置 -->
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <activity android:name=".lifecycle.LifecycleActivity">
+        <activity android:name=".lifecycle.LifecycleActivity"
+            android:label="Lifecycle"
+            android:persistableMode="persistAcrossReboots">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
             <intent-filter>
                 <!-- 必需项 -->
                 <action android:name="android.intent.action.VIEW" />
@@ -31,6 +47,11 @@
                     android:host="urlhost"
                     android:port="8888"
                     android:path="/urlpath" />
+            </intent-filter>
+
+            <intent-filter>
+                <action android:name="com.justnow.lifecycleaction" />
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
 

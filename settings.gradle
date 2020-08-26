@@ -1,2 +1,3 @@
 include ':app'
+include ':supportapp:app'
 rootProject.name = "AndroidSummarize"
